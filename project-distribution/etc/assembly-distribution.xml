@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+	<id>distribution-${project.version}</id>
+
+	<formats>
+		<format>zip</format>
+		<format>dir</format>
+	</formats>
+
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+    <dependencySets>
+        <dependencySet>
+            <includes>
+                <include>org.example.assembly-sample:project-sql:*</include>
+            </includes>
+            <outputDirectory>sql/update/01.00.00_to_01.01.00</outputDirectory>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <includes>
+                    <include>oracle/update/1_alter_schema.sql</include>
+                    <include>oracle/update/2_insert_data.sql</include>
+                </includes>
+            </unpackOptions>
+            <useProjectArtifact>false</useProjectArtifact>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+        </dependencySet>
+    </dependencySets>
+
+</assembly>
